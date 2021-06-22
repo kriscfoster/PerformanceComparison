@@ -50,7 +50,6 @@ app.patch('/books/:id', (req, res) => {
   });
 });
 
-
 app.delete('/books/:id', (req, res) => {
   const { id } = req.params;
   pool.query('DELETE FROM book WHERE id = $1 RETURNING *', [id], (error, results) => {
