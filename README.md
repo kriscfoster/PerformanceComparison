@@ -7,6 +7,9 @@ I will be using [Apache Jmeter](https://jmeter.apache.org/) to compare the perfo
 1. Kotlin & Spring
 1. NodeJS & Express
 
+## What does the API do that we are performance testing?
+TODO
+
 ## Results
 TODO
 
