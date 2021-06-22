@@ -2,14 +2,13 @@
 
 ## Running Locally
 
-* Postgres running locally
-* Create a database called `node-express`
-* `npm install`
-* `npm start`
-
+* Postgres running locally.
+* Create a database called `node-express` & run following SQL:
 ```
 CREATE TABLE book (
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(255)
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255)
 );
 ```
+* `npm install`
+* `npm start`
