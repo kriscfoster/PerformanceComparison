@@ -59,3 +59,12 @@ app.delete('/books/:id', (req, res) => {
   });
 });
 
+app.get('/cpu-intensive', (req, res) => {
+  const { num } = req.query;
+  let result = 0;
+  for (let i = 0; i < Math.pow(num, 7); i++) {
+    result += Math.atan(i) * Math.tan(i);
+  }
+
+  res.json(result);
+});
