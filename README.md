@@ -18,10 +18,13 @@ For consistency, all our web applications use a postgres database with the same 
 
 #### CPU Intensive Endpoint
 ```
-const number = 10 // configurable
-let result = 0;
-for (let i = 0; i < Math.pow(number, 7); i++) {
-  result += Math.atan(i) * Math.tan(i);
+function cpuIntensive(number) {
+  let result = 0;
+  for (let i=0; i<Math.pow(number, 7); i++) {
+    result += Math.atan(i) * Math.tan(i);
+  }
+
+  return result;
 }
 ```
 ## Results
