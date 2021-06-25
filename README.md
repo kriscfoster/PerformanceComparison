@@ -14,8 +14,16 @@ For consistency, all our web applications use a postgres database with the same 
 * `[GET] /books/{id}` - Gets book with specified `id` if it exists.
 * `[PATCH] /books/{id}` - Updates book with specified `id` if it exists.
 * `[DELETE] /books/{id}` - Deletes book with specified `id` if it exists.
-* `[GET] /cpu-intensive?num={number}` - Performs cpu intensive operation using `number` as a parameter.
+* `[GET] /cpu-intensive?num={number}` - Performs CPU intensive math operations using `number` as a parameter.
 
+#### CPU Intensive Endpoint
+```
+const number = 10 // configurable
+let result = 0;
+for (let i = 0; i < Math.pow(number, 7); i++) {
+  result += Math.atan(i) * Math.tan(i);
+}
+```
 ## Results
 TODO
 
