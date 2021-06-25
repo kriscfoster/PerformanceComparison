@@ -1,14 +1,20 @@
 # PerformanceComparison
 
 ## Overview
-
 This aims to provide a comparison of performance for web applications built using different technologies.
 I will be using [Apache Jmeter](https://jmeter.apache.org/) to compare the performance of REST APIs built with:
 1. Kotlin & Spring
 1. NodeJS & Express
 
-## What does the API do that we are performance testing?
-TODO
+For consistency, all our web applications use a postgres database with the same schema for persistence.
+
+### What endpoints are we using for our performance tests?
+* `[POST] /books` - Persists a book in database.
+* `[GET] /books` - Gets all books from database.
+* `[GET] /books/{id}` - Gets book with specified `id` if it exists.
+* `[PATCH] /books/{id}` - Updates book with specified `id` if it exists.
+* `[DELETE] /books/{id}` - Deletes book with specified `id` if it exists.
+* `[GET] /cpu-intensive?num={number}` - Performs cpu intensive operation using `number` as a parameter.
 
 ## Results
 TODO

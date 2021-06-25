@@ -1,7 +1,6 @@
 # node-express
 
-## Running Locally
-
+## Prerequisites
 * Postgres running locally.
 * Create a database called `node-express` & run following SQL:
 ```
@@ -10,5 +9,7 @@ CREATE TABLE book (
   title VARCHAR(255)
 );
 ```
+
+## Running Locally
 * `npm install`
 * `npm start`
