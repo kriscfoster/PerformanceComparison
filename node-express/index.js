@@ -1,62 +1,67 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import config from './config.js';
+import db from './database.js';
+const { sequelize, Book } = db;
+sequelize.sync();
 
 const app = express();
 app.use(bodyParser.json());
-const { databaseUrl } = config;
-import pg from 'pg';
-const { Pool } = pg;
-
-const pool = new Pool({
-  connectionString: databaseUrl,
-});
 
 const port = process.env.PORT || 5000;
 app.listen(5000);
 console.log(`listening on port: ${port}`);
 
-app.get('/books', (_req, res) => {
-  pool.query('SELECT * FROM book', (error, results) => {
-    if (error) throw error;
-    res.status(200).json(results.rows);
-  });
+app.get('/books', async (_req, res) => {
+  try {
+    const books = await Book.findAll();
+    res.status(200).json(books);
+  } catch(err) {
+    res.status(500).send();
+  }
 });
 
-app.get('/books/:id', (req, res) => {
+app.get('/books/:id', async (req, res) => {
   const { id } = req.params;
-  pool.query('SELECT * FROM book WHERE id = $1', [id], (error, results) => {
-    if (error) throw error
-    if (!results.rows.length) return res.status(404).send();
-    res.status(200).json(results.rows[0]);
-  });
+  try {
+    const book = await Book.findByPk(id);
+    if (!book) res.status(404).send();
+    res.status(200).json(book);
+  } catch(err) {
+    res.status(500).send();
+  }
 });
 
-app.post('/books', (req, res) => {
+app.post('/books', async (req, res) => {
   const { title } = req.body;
-  pool.query('INSERT INTO book(title) VALUES ($1) RETURNING *', [title], (error, results) => {
-    if (error) throw error
-    res.status(201).json(results.rows[0]);
-  });
+  try {
+    const book = await Book.create({ title });
+    res.status(201).json(book);
+  } catch(err) {
+    res.status(500).send();
+  }
 });
 
-app.patch('/books/:id', (req, res) => {
+app.patch('/books/:id', async (req, res) => {
   const { id } = req.params;
   const { title } = req.body;
-  pool.query('UPDATE book SET title = $1 WHERE id = $2 RETURNING *', [title, id], (error, results) => {
-    if (error) throw error
-    if (!results.rows.length) return res.status(404).send();
-    res.status(200).json(results.rows[0]);
-  });
+  try {
+    const book = await Book.update({ title }, { where: { id }, returning: true });
+    if (!book[1].length) res.status(404).send();
+    res.status(200).json(book[1][0]);
+  } catch(err) {
+    res.status(500).send();
+  }
 });
 
-app.delete('/books/:id', (req, res) => {
+app.delete('/books/:id', async (req, res) => {
   const { id } = req.params;
-  pool.query('DELETE FROM book WHERE id = $1 RETURNING *', [id], (error, results) => {
-    if (error) throw error;
-    if (!results.rows.length) return res.status(404).send();
-    res.status(200).send(`book deleted with id: ${results.rows[0].id}`);
-  });
+  try {
+    const book = await Book.destroy({ where: { id } });
+    if (book === 0) res.status(404).send();
+    res.status(200).send();
+  } catch(err) {
+    res.status(500).send();
+  }
 });
 
 app.get('/cpu-intensive', (req, res) => {

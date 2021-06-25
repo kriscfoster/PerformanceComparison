@@ -1,0 +1,21 @@
+version: "3"
+services:
+  postgres:
+    image: "postgres"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+  web:
+    image: "kriscfoster/node-express"
+    command: "node index.js"
+    environment:
+      DB_SCHEMA: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: postgres
+    ports:
+      - "5000:5000"
+    depends_on:
+      - "postgres"
