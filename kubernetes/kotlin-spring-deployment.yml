@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kotlin-spring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kotlin-spring
+  template:
+    metadata:
+      labels:
+        app: kotlin-spring
+    spec:
+      containers:
+        - name: kotlin-spring
+          image: kriscfoster/kotlin-spring
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres:5432/postgres
+          ports:
+            - containerPort: 5000
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "2000m"
+          imagePullPolicy: Never

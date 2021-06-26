@@ -37,13 +37,26 @@ function cpuIntensive(number) {
 ### Prerequesites
 
 * `docker` installed.
+* `kubernetes` installed & running locally.
 
 ### Running APIs In Docker Container
 
-* `./scripts/start-node-express.sh`
-* `./scripts/start-kotlin-spring.sh`
+* `./start-node-express.sh`
+* `./start-kotlin-spring.sh`
 
 
 ## Results
 
-TODO
+### 1 pod, default memory & cpu
+
+### 1 pod, low memory & default cpu
+
+### 1 pod, high memory & default cpu
+
+### 1 pod, default memory & low cpu
+
+### 1 pod, default memory & high cpu
+
+### 2 pods, default memory & cpu
+
+### 10 pods, default memory & cpu
