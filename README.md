@@ -40,8 +40,9 @@ function cpuIntensive(number) {
 
 ### Running APIs In Docker Container
 
-* `./scripts/start-node-express.sh`
-* `./scripts/start-kotlin-spring.sh`
+* `cd ./scripts`
+* `./start-node-express.sh`
+* `./start-kotlin-spring.sh`
 
 
 ## Results
