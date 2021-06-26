@@ -49,14 +49,42 @@ function cpuIntensive(number) {
 
 ### 1 pod, default memory & cpu
 
+#### node/express
+
+#### kotlin/spring
+
 ### 1 pod, low memory & default cpu
+
+#### node/express
+
+#### kotlin/spring
 
 ### 1 pod, high memory & default cpu
 
+#### node/express
+
+#### kotlin/spring
+
 ### 1 pod, default memory & low cpu
+
+#### node/express
+
+#### kotlin/spring
 
 ### 1 pod, default memory & high cpu
 
+#### node/express
+
+#### kotlin/spring
+
 ### 2 pods, default memory & cpu
 
+#### node/express
+
+#### kotlin/spring
+
 ### 10 pods, default memory & cpu
+
+#### node/express
+
+#### kotlin/spring
