@@ -32,16 +32,18 @@ function cpuIntensive(number) {
 }
 ```
 
-## Results
-
-TODO
-
 ## Running Tests Locally
 
 ### Prerequesites
 
-- `docker` installed.
+* `docker` installed.
 
 ### Running APIs In Docker Container
 
-- `./start.sh`
+* `./scripts/start-node-express.sh`
+* `./scripts/start-kotlin-spring.sh`
+
+
+## Results
+
+TODO

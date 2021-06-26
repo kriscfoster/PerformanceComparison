@@ -1,0 +1,17 @@
+version: "3"
+services:
+  postgres:
+    image: "postgres"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+  api:
+    image: "kriscfoster/kotlin-spring"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+    ports:
+      - "5000:8080"
+    depends_on:
+      - "postgres"

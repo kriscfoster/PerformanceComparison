@@ -7,9 +7,8 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
-  web:
+  api:
     image: "kriscfoster/node-express"
-    command: "node index.js"
     environment:
       DB_SCHEMA: postgres
       DB_USER: postgres
