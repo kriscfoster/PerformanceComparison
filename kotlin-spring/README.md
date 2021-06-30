@@ -10,6 +10,10 @@
 - `[GET] /cpu-intensive?num={number}` - Performs CPU intensive math operations using `number` as a parameter.
 
 ## Running Locally
+
+### Prerequisites
+* docker installed
+
 ### Starting Application
 * `docker build ./ -t kriscfoster/kotlin-spring`
 * `docker compose up`
