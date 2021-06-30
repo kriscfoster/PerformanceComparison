@@ -1,4 +1,4 @@
-# kotlin-spring
+# node-express
 
 ### Endpoints
 
@@ -11,7 +11,7 @@
 
 ## Running Locally
 ### Starting Application
-* `docker build ./ -t kriscfoster/kotlin-spring`
+* `docker build ./ -t kriscfoster/node-express`
 * `docker compose up`
 
 ### Stopping Application
