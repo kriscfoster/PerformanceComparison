@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: kotlin-spring
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: kotlin-spring
@@ -22,6 +22,6 @@ spec:
             - containerPort: 5000
           resources:
             limits:
-#              cpu: "3000m"
-#              memory: "256Mi"
+              cpu: "2000m"
+              memory: "256Mi"
           imagePullPolicy: Never

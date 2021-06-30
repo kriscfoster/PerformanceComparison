@@ -46,71 +46,98 @@ function cpuIntensive(number) {
 
 ## Results
 
-### 1 pod, default memory & cpu
+### 1 pod (no memory/cpu limits)
 
 #### node/express
 
 | Route                         | # Samples  | Average (ms)   | % Over 1000ms   | Throughput   |
 |---|---|---|---|---|
-| `*`                           | 500        | 307            | 2.4%            | 16/sec       |
-| `[POST] /books`               | 100        | 493            | 8%              |   |
-| `[PATCH] /books`              | 100        | 127            | 0%              |   |
-| `[GET] /books/1`              | 100        | 92             | 0%              |   |
-| `[GET] /books`                | 100        | 274            | 2%              |   |
-| `[GET] /cpu-intensive?num=8`  | 100        | 547            | 2%              |   |
+| `*`                           | 500        | 308            | 0.6%            | 15.9/sec       |
+| `[POST] /books`               | 100        | 590            | 2%              |   |
+| `[PATCH] /books/1`            | 100        | 427            | 0%              |   |
+| `[GET] /books/1`              | 100        | 16             | 0%              |   |
+| `[GET] /books`                | 100        | 6              | 0%              |   |
+| `[GET] /cpu-intensive?num=8`  | 100        | 487            | 1%              |   |
 
 #### kotlin/spring
 
 | Route                         | # Samples  | Average (ms)   | % Over 1000ms   | Throughput   |
 |---|---|---|---|---|
-| `*`                           | 500        | 80             | 0%              | 58.8/sec     |
-| `[POST] /books`               | 100        | 7              | 0%              |   |
-| `[PATCH] /books`              | 100        | 3              | 0%              |   |
-| `[GET] /books/1`              | 100        | 4              | 0%              |   |
+| `*`                           | 500        | 117            | 0%              | 41.7/sec     |
+| `[POST] /books`               | 100        | 67             | 0%              |   |
+| `[PATCH] /books/1`            | 100        | 16             | 0%              |   |
+| `[GET] /books/1`              | 100        | 11             | 0%              |   |
+| `[GET] /books`                | 100        | 12             | 0%              |   |
+| `[GET] /cpu-intensive?num=8`  | 100        | 481            | 0%              |   |
+
+### 2 pods (no memory/cpu limits)
+
+#### node/express
+
+| Route                         | # Samples  | Average (ms)   | % Over 1000ms   | Throughput   |
+|---|---|---|---|---|
+| `*`                           | 500        | 178            | 0%              | 26.1/sec       |
+| `[POST] /books`               | 100        | 313            | 0%              |   |
+| `[PATCH] /books/1`            | 100        | 214            | 0%              |   |
+| `[GET] /books/1`              | 100        | 3              | 0%              |   |
+| `[GET] /books`                | 100        | 3              | 0%              |   |
+| `[GET] /cpu-intensive?num=8`  | 100        | 357            | 0%              |   |
+
+#### kotlin/spring
+
+| Route                         | # Samples  | Average (ms)   | % Over 1000ms   | Throughput   |
+|---|---|---|---|---|
+| `*`                           | 500        | 84             | 0%              | 57.3/sec     |
+| `[POST] /books`               | 100        | 58             | 0%              |   |
+| `[PATCH] /books/1`            | 100        | 16             | 0%              |   |
+| `[GET] /books/1`              | 100        | 10             | 0%              |   |
+| `[GET] /books`                | 100        | 10             | 0%              |   |
+| `[GET] /cpu-intensive?num=8`  | 100        | 327            | 0%              |   |
+
+### 5 pods (no memory/cpu limits)
+
+#### node/express
+
+| Route                         | # Samples  | Average (ms)   | % Over 1000ms   | Throughput   |
+|---|---|---|---|---|
+| `*`                           | 500        | 122            | 0%              | 37.0/sec       |
+| `[POST] /books`               | 100        | 139            | 0%              |   |
+| `[PATCH] /books/1`            | 100        | 115            | 0%              |   |
+| `[GET] /books/1`              | 100        | 3              | 0%              |   |
+| `[GET] /books`                | 100        | 4              | 0%              |   |
+| `[GET] /cpu-intensive?num=8`  | 100        | 348            | 0%              |   |
+
+#### kotlin/spring
+
+| Route                         | # Samples  | Average (ms)   | % Over 1000ms   | Throughput   |
+|---|---|---|---|---|
+| `*`                           | 500        | 64             | 0%              | 82.31/sec     |
+| `[POST] /books`               | 100        | 48             | 0%              |   |
+| `[PATCH] /books/1`            | 100        | 10             | 0%              |   |
+| `[GET] /books/1`              | 100        | 7              | 0%              |   |
+| `[GET] /books`                | 100        | 9              | 0%              |   |
+| `[GET] /cpu-intensive?num=8`  | 100        | 245            | 0%              |   |
+
+### 1 pod, cpu limit (1000m / 1 core)
+
+#### node/express
+
+| Route                         | # Samples  | Average (ms)   | % Over 1000ms   | Throughput   |
+|---|---|---|---|---|
+| `*`                           | 500        | 314            | 4.4%            | 15.6/sec       |
+| `[POST] /books`               | 100        | 622            | 12%             |   |
+| `[PATCH] /books/1`            | 100        | 368            | 0%              |   |
+| `[GET] /books/1`              | 100        | 6              | 0%              |   |
 | `[GET] /books`                | 100        | 5              | 0%              |   |
-| `[GET] /cpu-intensive?num=8`  | 100        | 371            | 0%              |   |
+| `[GET] /cpu-intensive?num=8`  | 100        | 563            | 10%             |   |
 
-### 2 pods, default memory & cpu
-
-#### node/express
+#### kotlin/spring
 
 | Route                         | # Samples  | Average (ms)   | % Over 1000ms   | Throughput   |
 |---|---|---|---|---|
-| `*`                           | 500        | 163            | 0%              | 27.9/sec       |
-| `[POST] /books`               | 100        | 185            | 0%              |   |
-| `[PATCH] /books`              | 100        | 70             | 0%              |   |
-| `[GET] /books/1`              | 100        | 54             | 0%              |   |
-| `[GET] /books`                | 100        | 113            | 0%              |   |
-| `[GET] /cpu-intensive?num=8`  | 100        | 392            | 0%              |   |
-
-#### kotlin/spring
-
-### 10 pods, default memory & cpu
-
-#### node/express
-
-#### kotlin/spring
-
-### 1 pod, low memory & default cpu
-
-#### node/express
-
-#### kotlin/spring
-
-### 1 pod, high memory & default cpu
-
-#### node/express
-
-#### kotlin/spring
-
-### 1 pod, default memory & low cpu
-
-#### node/express
-
-#### kotlin/spring
-
-### 1 pod, default memory & high cpu
-
-#### node/express
-
-#### kotlin/spring
+| `*`                           | 500        | 238            | 18.4%           | 20.8/sec     |
+| `[POST] /books`               | 100        | 127            | 0%              |   |
+| `[PATCH] /books/1`            | 100        | 20             | 0%              |   |
+| `[GET] /books/1`              | 100        | 17             | 0%              |   |
+| `[GET] /books`                | 100        | 31             | 0%              |   |
+| `[GET] /cpu-intensive?num=8`  | 100        | 994            | 92%             |   |

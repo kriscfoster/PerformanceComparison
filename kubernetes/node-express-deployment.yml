@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: node-express
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: node-express
@@ -26,4 +26,8 @@ spec:
               value: postgres
           ports:
             - containerPort: 5000
+          resources:
+            limits:
+              cpu: "2000m"
+              memory: "256Mi"
           imagePullPolicy: Never
